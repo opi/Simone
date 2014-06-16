@@ -28,7 +28,7 @@ $(document).ready(function () {
                 var c = this;
                 anchor = page.split('#')[1];
                 page = page.split('#')[0];
-                absolutePage = location.href.split('#/')[0].split('/').pop();
+                absolutePage = location.pathname.split('#/')[0].split('/').pop();
                 if (absolutePage !== "" && absolutePage !== page) {
                     c.redirect('/#/'+ absolutePage);
                 }
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
                 defaultLanguage = conf.defaultLanguage;
                 languages = conf.languages;
-                var href = document.location.href;
+                var href = document.location.pathname;
                 if (href.substr(href.length - 3, 1) == '_') {
                     href = href.substr(0, href.length - 3);
                 }
@@ -91,7 +91,7 @@ $(document).ready(function () {
         });
 
         sam.get('#/', function (c) {
-            absolutePage = location.href.split('#/')[0].split('/').pop();
+            absolutePage = location.pathname.split('#/')[0].split('/').pop();
             if (absolutePage !== "") {
                 c.redirect('/#/'+ absolutePage);
             } else {
@@ -217,7 +217,7 @@ $(document).ready(function () {
         if (e.keyCode == 27) {
             page = store.get('page');
             store.set('data-'+ page, $('#form textarea').val());
-            href = document.location.href;
+            href = document.location.pathname;
             if (href.substr(href.length - 5) == '/edit') {
                 document.location.href = '#/'+ page +'/preview';
             } else {
